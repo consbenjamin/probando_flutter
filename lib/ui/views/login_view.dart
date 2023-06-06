@@ -51,7 +51,27 @@ class LoginView extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, MainView.id );
+                  if (false) {
+                    Navigator.pushNamed(context, MainView.id);
+                  } else {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Error'),
+                          content: const Text('La entrada no es válida.'),
+                          actions: [
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text('Aceptar'),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  }
                 },
                 child: const Text(
                   'Iniciar Sesion',
